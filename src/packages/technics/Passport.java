@@ -61,4 +61,8 @@ public class Passport {
                 ", power=" + power +
                 '}';
     }
+
+    public void changeOwner (String newOwner){
+;
+    }
 }

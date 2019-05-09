@@ -48,4 +48,8 @@ public class Passport {
                 ", year=" + year +
                 '}';
     }
+    public void changeOwner (String newOwner){
+        PassportUtil.changeOwner(newOwner, this);
+    }
+
 }
