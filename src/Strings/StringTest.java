@@ -59,5 +59,13 @@ public class StringTest {
         if(str12.contains("ошибка")){
             System.out.println("Произошла ошибка");
         }
+
+        //ЧАСТЬ 3
+
+        System.out.println("---------------- ЧАСТЬ 4 ---------------------");
+        StringBuilder sb1 = new StringBuilder(str1 + str2 + str3 + "\n" + str5 + str6 + str7 + "\n" + low + str11 + trim1);
+        System.out.println(sb1);
+        sb1.reverse();
+        System.out.println(sb1);
     }
 }
