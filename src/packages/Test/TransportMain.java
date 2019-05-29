@@ -7,7 +7,7 @@ public class TransportMain {
         Passport tr2 = new Passport();
         tr2.setOwnerName("Ivan");
         System.out.println(tr2.getOwnerName());
-        Passport tr3 = tr2.changeOwner("Ivan0");
+//        Passport tr3 = tr2.changeOwner("Ivan0");
         System.out.println(tr2.getOwnerName());
     }
 }
