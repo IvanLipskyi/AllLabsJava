@@ -41,6 +41,12 @@ public class User {
 
     private String phone;
 
+    /**
+     *
+     * @param age
+     * @param name
+     * @param phone
+     */
     public User(int age, String name, String phone){
         this.age = age;
         this.name = name;
@@ -75,6 +81,10 @@ public class User {
     return age + "\n" + name + "\n" + phone;
     }
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         HashSet<User> userSet = new HashSet<>();
         User u1 = new User(18,"Ivan","380507778889");
