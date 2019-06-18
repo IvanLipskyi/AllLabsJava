@@ -1,15 +1,18 @@
 package Concurrency;
 
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ThreadLocalRandom;
 
+import static Concurrency.Race.startRaceTime;
 import static java.lang.Thread.sleep;
 
 public class RaceCarRunnable extends Car implements Runnable {
 
     private int passed;
-    int finishTime;
+    long finishTime;
     private int distance;
     private boolean isFinished;
+    CountDownLatch latch;
 
     public int getPassed() {
         return passed;
@@ -22,9 +25,10 @@ public class RaceCarRunnable extends Car implements Runnable {
     public boolean isFinished() {
         return isFinished;
     }
-    public RaceCarRunnable(String name, int maxSpeed, int distance) {
+    public RaceCarRunnable(String name, int maxSpeed, int distance, CountDownLatch latch) {
         super(name, maxSpeed);
         this.distance = distance;
+        this.latch = latch;
     }
 
     public int getRandomSpeed() {
@@ -43,8 +47,9 @@ public class RaceCarRunnable extends Car implements Runnable {
             passed +=(currentSpeed*1000 / (60*60));
             System.out.println(getName() + "=> speed: " + currentSpeed + "; progress: "+ passed+"/"+distance);
             if(passed >=distance){
-//                finishTime = System.currentTimeMillis() - startRaceTime.get();
+                finishTime = System.currentTimeMillis() - startRaceTime.get();
                 isFinished = true;
+                latch.countDown();
             }
         }
     }

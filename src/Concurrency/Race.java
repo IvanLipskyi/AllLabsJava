@@ -3,6 +3,7 @@ package Concurrency;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicLong;
 
 import static java.lang.Thread.sleep;
 
@@ -11,6 +12,7 @@ import static java.lang.Thread.sleep;
  */
 
 public class Race {
+    public static AtomicLong startRaceTime;
     static void startRace(List<Thread> cars) {
         new Thread(new Runnable() {
             @Override
@@ -24,6 +26,7 @@ public class Race {
                     System.out.println("1");
                     sleep(500);
                     System.out.println("GO!!!");
+                    startRaceTime = new AtomicLong(System.currentTimeMillis());
                     for (Thread t : cars) {
                         t.start();
                     }
@@ -46,6 +49,7 @@ public class Race {
         startRace(thr);
         cdl.await();
         System.out.println("Race is over. All cars finished");
+        for (RaceCarRunnable car : cars) System.out.println(car.getName() + " " + car.finishTime);;
     }
 }
 
