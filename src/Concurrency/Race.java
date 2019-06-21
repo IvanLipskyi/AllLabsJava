@@ -40,9 +40,9 @@ public class Race {
     public static void main(String[] args) throws InterruptedException {
         ArrayList<RaceCarRunnable> cars = new ArrayList<>();
         CountDownLatch cdl = new CountDownLatch(3);
-        cars.add(new RaceCarRunnable("Mazda", 120, 300, cdl));
+        cars.add(new RaceCarRunnable("Mazda", 140, 300, cdl));
         cars.add(new RaceCarRunnable("BMW", 140, 300, cdl));
-        cars.add(new RaceCarRunnable("Toyota", 135, 300, cdl));
+        cars.add(new RaceCarRunnable("Toyota", 140, 300, cdl));
 
         ArrayList<Thread> thr = new ArrayList<>();
         for (RaceCarRunnable car : cars) thr.add(new Thread(car));
